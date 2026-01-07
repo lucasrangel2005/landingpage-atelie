@@ -73,16 +73,19 @@ export function Gallery() {
                     </motion.div>
                   </div>
 
-                  <AnimatePresence>
+                  <AnimatePresence mode="wait">
                     {hoveredIndex === idx && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-xl"
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        transition={{ 
+                          duration: 0.4,
+                          ease: [0.25, 0.1, 0.25, 1]
+                        }}
+                        className="absolute bottom-4 left-4 right-4 bg-white/98 backdrop-blur-md rounded-xl p-4 shadow-2xl border border-accent/10"
                       >
-                        <p className="text-sm text-ink/80 font-medium">
+                        <p className="text-sm text-ink/80 font-medium leading-relaxed">
                           {img.description}
                         </p>
                       </motion.div>
