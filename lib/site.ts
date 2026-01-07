@@ -5,7 +5,7 @@ export type NavItem = {
 
 export const site = {
   brand: {
-    name: "Seu Ateliê",
+    name: "Cris Fernandes Ateliê",
     // Dica: o site de referência usa Rozha One (título) + Quicksand (corpo)
     // e muito texto em CAIXA ALTA.
     logoText: "A",
@@ -19,9 +19,9 @@ export const site = {
   ] satisfies NavItem[],
 
   hero: {
-    title: "ENXOVAIS E PEÇAS INFANTIS PERSONALIZADAS",
+    title: "ENXOVAIS PARA SEU BEBÊ COM CARINHO E PERSONALIZAÇÃO",
     subtitle:
-      "Uma experiência completa: você escolhe o tema, as cores e os detalhes — e eu faço com capricho do começo ao fim.",
+      "Do planejamento aos últimos acabamentos, criamos um enxoval personalizado para o seu bebê: você escolhe as combinações e nós produzimos artesanalmente, com materiais selecionados e um cuidado visível em cada detalhe.",
     ctaLabel: "CHAMAR NO WHATSAPP",
   },
 
@@ -35,7 +35,7 @@ export const site = {
 
   gallery: {
     title: "TRABALHOS",
-    subtitle: "Algumas ideias para inspirar (troque pelas fotos reais depois).",
+    subtitle: "Algumas ideias para inspirar.",
     images: [
       { src: "/portfolio/01.svg", alt: "Trabalho 1", description: "Enxoval completo com bordados personalizados e acabamento artesanal" },
       { src: "/portfolio/02.svg", alt: "Trabalho 2", description: "Kit maternidade com toalhas e fraldas bordadas" },
@@ -75,12 +75,12 @@ export const site = {
     priceLabelTop: "",
     installments: "",
     cash: "",
-    ctaLabel: "PEDIR EXEMPLO",
+    ctaLabel: "MAIS INFORMAÇÕES",
   },
 
   about: {
     title: "OLÁ, PRAZER!",
-    name: "Seu Nome",
+    name: "Cristina Fernandes",
     text:
       "Conte um pouco da história do ateliê: há quanto tempo faz, qual o diferencial, e por que as pessoas podem confiar em você. Deixe humano e simples.",
   },
