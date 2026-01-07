@@ -52,9 +52,10 @@ export function Gallery() {
                 <motion.div
                   onHoverStart={() => setHoveredIndex(idx)}
                   onHoverEnd={() => setHoveredIndex(null)}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.05, y: -10, rotate: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   className="relative w-full md:w-2/3 overflow-hidden rounded-2xl bg-white shadow-soft hover:shadow-2xl transition-all duration-500 cursor-pointer group"
+                  style={{ transformOrigin: "center center" }}
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <motion.div

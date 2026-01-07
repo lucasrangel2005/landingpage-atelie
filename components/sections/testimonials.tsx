@@ -32,7 +32,7 @@ export function Testimonials() {
                 delay: Math.min(idx, 5) * 0.1,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
-              whileHover={{ scale: 1.05, y: -10, rotate: idx % 2 === 0 ? 2 : -2 }}
+              whileHover={{ scale: 1.05, y: -10, rotate: 0 }}
               className="rounded-2xl bg-white/80 p-6 shadow-soft backdrop-blur hover:shadow-2xl transition-all duration-500 cursor-pointer"
             >
               <div className="text-sm text-ink/70">“{t.text}”</div>

@@ -18,7 +18,7 @@ export function WhatsAppFloating() {
       className="fixed bottom-5 right-5 z-50"
     >
       <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
+        whileHover={{ scale: 1.1, rotate: 0 }}
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.2 }}
       >
