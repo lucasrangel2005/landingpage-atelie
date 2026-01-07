@@ -37,12 +37,12 @@ export const site = {
     title: "TRABALHOS",
     subtitle: "Algumas ideias para inspirar (troque pelas fotos reais depois).",
     images: [
-      { src: "/portfolio/01.svg", alt: "Trabalho 1" },
-      { src: "/portfolio/02.svg", alt: "Trabalho 2" },
-      { src: "/portfolio/03.svg", alt: "Trabalho 3" },
-      { src: "/portfolio/04.svg", alt: "Trabalho 4" },
-      { src: "/portfolio/05.svg", alt: "Trabalho 5" },
-      { src: "/portfolio/06.svg", alt: "Trabalho 6" },
+      { src: "/portfolio/01.svg", alt: "Trabalho 1", description: "Enxoval completo com bordados personalizados e acabamento artesanal" },
+      { src: "/portfolio/02.svg", alt: "Trabalho 2", description: "Kit maternidade com toalhas e fraldas bordadas" },
+      { src: "/portfolio/03.svg", alt: "Trabalho 3", description: "Peças decorativas para quarto de bebê com tema safari" },
+      { src: "/portfolio/04.svg", alt: "Trabalho 4", description: "Conjunto de lençóis e fronhas com apliques delicados" },
+      { src: "/portfolio/05.svg", alt: "Trabalho 5", description: "Mantas e almofadas personalizadas com nome do bebê" },
+      { src: "/portfolio/06.svg", alt: "Trabalho 6", description: "Kit higiene completo com detalhes em renda e laços" },
     ],
   },
 
