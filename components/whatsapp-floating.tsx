@@ -22,7 +22,7 @@ export function WhatsAppFloating() {
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.2 }}
       >
-        <WhatsAppLink className="group flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-black shadow-soft hover:shadow-2xl transition-all duration-300">
+        <WhatsAppLink className="group flex items-center gap-3 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-paper shadow-soft hover:shadow-2xl hover:bg-sage transition-all duration-300">
           <motion.span 
             animate={{ 
               scale: [1, 1.1, 1],

@@ -100,8 +100,8 @@ export function Gallery() {
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sage/20 flex items-center justify-center">
-                      <span className="text-sage font-bold text-sm">{idx + 1}</span>
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
+                      <span className="text-accent font-bold text-sm">{idx + 1}</span>
                     </div>
                     <div>
                       <h3 className="font-semibold text-sage mb-2">Etapa {idx + 1}</h3>

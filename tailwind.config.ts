@@ -13,18 +13,18 @@ const config: Config = {
         display: ["var(--font-display)", "system-ui", "serif"],
       },
       colors: {
-        // Direct aliases used across components
-        paper: "#FEFAE0",
-        sand: "#A67C52",
-        sage: "#4E732D",
-        ink: "#6B4226",
-        accent: "#97BC62",
+        // Clean palette: browns, beige, sand, off-white
+        paper: "#FAF8F4",
+        sand: "#D4C5B9",
+        sage: "#5D4E37",
+        ink: "#5D4E37",
+        accent: "#8B7355",
         brand: {
-          cream: "#FEFAE0",
-          sand: "#A67C52",
-          clay: "#4E732D",
-          wine: "#6B4226",
-          accent: "#97BC62",
+          cream: "#FAF8F4",
+          sand: "#D4C5B9",
+          clay: "#5D4E37",
+          wine: "#5D4E37",
+          accent: "#8B7355",
         },
       },
       animation: {

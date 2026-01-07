@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root{
-  --cream: #FEFAE0;
-  --sand: #A67C52;
-  --clay: #4E732D;
-  --wine: #6B4226;
-  --accent: #97BC62;
+  --cream: #FAF8F4;
+  --sand: #D4C5B9;
+  --clay: #5D4E37;
+  --wine: #5D4E37;
+  --accent: #8B7355;
 }
 
 html {
