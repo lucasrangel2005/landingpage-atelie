@@ -4,17 +4,58 @@
 
 :root{
   --cream: #FEFAE0;
-  --sand: #DDA15E;
-  --clay: #BC6C25;
-  --wine: #731414;
+  --sand: #A67C52;
+  --clay: #4E732D;
+  --wine: #6B4226;
+  --accent: #97BC62;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body { height: 100%; }
 
 body{
   color: var(--wine);
-  background:
-    radial-gradient(1200px 800px at 10% 0%, rgba(221,161,94,0.22), transparent 60%),
-    radial-gradient(900px 700px at 90% 10%, rgba(188,108,37,0.18), transparent 55%),
-    var(--cream);
+  background: var(--cream);
+}
+
+/* Transições suaves globais */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Efeito de fade-in para elementos ao aparecer */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes utilitárias para animações */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Efeito smooth nos links de âncora */
+a[href^="#"] {
+  scroll-behavior: smooth;
+}
+
+/* Sombras suaves em hover */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
