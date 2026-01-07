@@ -29,6 +29,7 @@ function SocialIcon({
 export function Header() {
   const [hidden, setHidden] = useState(false);
   const [atTop, setAtTop] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
   
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -36,6 +37,7 @@ export function Header() {
     
     if (latest > previous && latest > 150) {
       setHidden(true);
+      setMobileMenuOpen(false); // Fecha menu mobile ao rolar para baixo
     } else {
       setHidden(false);
     }
@@ -57,20 +59,21 @@ export function Header() {
           : "bg-brand-wine/95 shadow-lg backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex items-center justify-between px-20 py-4">
-        <a href="#top" className="flex items-center gap-3 group">
-          <div className="grid h-11 w-11 place-items-center rounded-full bg-brand-cream/20 border border-brand-cream/15 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <span className="font-heading text-xl leading-none text-brand-cream">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+          <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-brand-cream/20 border border-brand-cream/15 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+            <span className="font-heading text-lg sm:text-xl leading-none text-brand-cream">
               {site.brand.logoText}
             </span>
           </div>
           <div className="leading-tight">
-            <div className="font-heading text-lg group-hover:text-accent transition-colors duration-300">{site.brand.name}</div>
-            <div className="text-xs text-brand-cream/80">{site.footer.brandLine}</div>
+            <div className="font-heading text-sm sm:text-base lg:text-lg group-hover:text-accent transition-colors duration-300">{site.brand.name}</div>
+            <div className="text-[10px] sm:text-xs text-brand-cream/80">{site.footer.brandLine}</div>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-6 text-sm font-semibold tracking-wide md:flex">
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold tracking-wide">
           {site.nav.map((item) => (
             <a
               key={item.href}
@@ -85,8 +88,52 @@ export function Header() {
           </a>
         </nav>
 
-        <div className="w-[244px]"></div>
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden p-2 text-brand-cream hover:text-accent transition-colors"
+          aria-label="Menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {mobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="lg:hidden border-t border-brand-cream/10 bg-brand-wine/98 backdrop-blur-md"
+        >
+          <nav className="flex flex-col px-4 py-4 space-y-3">
+            {site.nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-brand-cream/90 hover:text-brand-cream hover:bg-brand-cream/10 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="#contato"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-brand-cream/90 hover:text-brand-cream hover:bg-brand-cream/10 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide"
+            >
+              CONTATO
+            </a>
+          </nav>
+        </motion.div>
+      )}
     </motion.header>
   );
 }
