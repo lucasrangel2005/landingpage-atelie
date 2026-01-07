@@ -57,7 +57,7 @@ export function Header() {
           : "bg-brand-wine/95 shadow-lg backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex items-center justify-between px-20 py-4">
         <a href="#top" className="flex items-center gap-3 group">
           <div className="grid h-11 w-11 place-items-center rounded-full bg-brand-cream/20 border border-brand-cream/15 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
             <span className="font-heading text-xl leading-none text-brand-cream">
@@ -84,6 +84,8 @@ export function Header() {
             CONTATO
           </a>
         </nav>
+
+        <div className="w-[244px]"></div>
       </div>
     </motion.header>
   );

@@ -10,19 +10,30 @@ function VideoEmbed({ url }: { url: string }) {
   if (url.endsWith(".mp4")) {
     return (
       <video
-        controls
-        preload="none"
-        className="h-full w-full rounded-xl bg-black"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="h-full w-full rounded-xl bg-black object-cover"
       >
         <source src={url} type="video/mp4" />
       </video>
     );
   }
 
+  // Para YouTube, extrair o ID do vídeo e usar com parâmetros de autoplay
+  const getYouTubeEmbedUrl = (youtubeUrl: string) => {
+    const videoId = youtubeUrl.split("youtu.be/")[1] || youtubeUrl.split("v=")[1]?.split("&")[0];
+    if (!videoId) return youtubeUrl;
+    // Parâmetros: autoplay=1 (autoplay), mute=1 (sem som), controls=0 (sem controles), loop=1 (repetir)
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}`;
+  };
+
   return (
     <iframe
       className="h-full w-full rounded-xl"
-      src={url}
+      src={getYouTubeEmbedUrl(url)}
       title="Vídeo"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
