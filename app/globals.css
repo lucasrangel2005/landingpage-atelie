@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --cream: #FEFAE0;
+  --sand: #DDA15E;
+  --clay: #BC6C25;
+  --wine: #731414;
+}
+
+html, body { height: 100%; }
+
+body{
+  color: var(--wine);
+  background:
+    radial-gradient(1200px 800px at 10% 0%, rgba(221,161,94,0.22), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, rgba(188,108,37,0.18), transparent 55%),
+    var(--cream);
+}
