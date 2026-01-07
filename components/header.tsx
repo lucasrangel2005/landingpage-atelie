@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { site } from "@/lib/site";
 import { WhatsAppLink } from "@/components/whatsapp-link";
 
@@ -25,8 +27,36 @@ function SocialIcon({
 }
 
 export function Header() {
+  const [hidden, setHidden] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const { scrollY } = useScroll();
+  
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    
+    setAtTop(latest < 50);
+  });
+
   return (
-    <header className="sticky top-0 z-50 bg-brand-wine text-brand-cream shadow-soft backdrop-blur-sm">
+    <motion.header 
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={`sticky top-0 z-50 text-brand-cream transition-all duration-300 ${
+        atTop 
+          ? "bg-brand-wine/80 shadow-none" 
+          : "bg-brand-wine/95 shadow-lg backdrop-blur-md"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4">
         <a href="#top" className="flex items-center gap-3 group">
           <div className="grid h-11 w-11 place-items-center rounded-full bg-brand-cream/20 border border-brand-cream/15 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
@@ -81,6 +111,6 @@ export function Header() {
           </div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
