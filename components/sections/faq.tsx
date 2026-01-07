@@ -8,7 +8,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="px-6 py-16 overflow-hidden bg-white">
+    <section id="faq" className="px-6 py-16 overflow-hidden bg-sand/20">
       <div className="mx-auto max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -17,7 +17,7 @@ export function FAQ() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="font-display text-3xl tracking-wide text-sage md:text-4xl">{site.faq.title}</h2>
+          <h2 className="font-heading text-3xl tracking-wide text-sage md:text-4xl">{site.faq.title}</h2>
         </motion.div>
 
         <div className="mx-auto mt-10 max-w-3xl">

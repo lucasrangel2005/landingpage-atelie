@@ -18,7 +18,7 @@ export function Gallery() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="font-display text-3xl tracking-wide text-sage md:text-4xl">
+          <h2 className="font-heading text-3xl tracking-wide text-sage md:text-4xl">
             {site.gallery.title}
           </h2>
           <p className="mt-3 text-base text-ink/70 md:text-lg">

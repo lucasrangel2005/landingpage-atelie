@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         body: ["var(--font-body)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "system-ui", "serif"],
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
       },
       colors: {
         // Clean palette: browns, beige, sand, off-white

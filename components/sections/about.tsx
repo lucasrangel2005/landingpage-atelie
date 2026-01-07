@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export function About() {
   return (
-    <section className="px-6 py-16 overflow-hidden bg-white">
+    <section className="px-6 py-16 overflow-hidden bg-paper">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <motion.div
@@ -44,7 +44,7 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-display text-3xl tracking-wide text-sage md:text-4xl"
+              className="font-heading text-3xl tracking-wide text-sage md:text-4xl"
             >
               {site.about.title}
             </motion.h2>

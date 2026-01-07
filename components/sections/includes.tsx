@@ -16,7 +16,7 @@ function CheckIcon() {
 
 export function Includes() {
   return (
-    <section id="inclui" className="px-6 py-16 overflow-hidden bg-white">
+    <section id="inclui" className="px-6 py-16 overflow-hidden bg-sand/20">
       <div className="mx-auto max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -25,7 +25,7 @@ export function Includes() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="font-display text-3xl tracking-wide text-sage md:text-4xl">
+          <h2 className="font-heading text-3xl tracking-wide text-sage md:text-4xl">
             {site.includes.title}
           </h2>
         </motion.div>
