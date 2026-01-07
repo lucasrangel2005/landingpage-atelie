@@ -8,10 +8,12 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { FAQ } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
 import { WhatsAppFloating } from "@/components/whatsapp-floating";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 export default function Page() {
   return (
     <main className="min-h-screen">
+      <ScrollProgress />
       <Header />
       <Hero />
       <Gallery />

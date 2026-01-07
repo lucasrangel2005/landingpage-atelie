@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { site } from "@/lib/site";
 import { WhatsAppLink } from "@/components/whatsapp-link";
 
@@ -30,12 +31,22 @@ function VideoEmbed({ url }: { url: string }) {
 }
 
 export function Hero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.5]);
+
   return (
-    <section id="top" className="bg-transparent overflow-hidden">
+    <section id="top" className="bg-transparent overflow-hidden" ref={ref}>
       <motion.div 
         initial={{ opacity: 0, scale: 1.1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
+        style={{ y, opacity }}
         className="relative h-[360px] w-full md:h-[520px]"
       >
         <Image
