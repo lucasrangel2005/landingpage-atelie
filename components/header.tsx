@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site";
 import { WhatsAppLink } from "@/components/whatsapp-link";
 
@@ -35,9 +35,8 @@ export function Header() {
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     
-    if (latest > previous && latest > 150) {
+    if (latest > previous && latest > 150 && !mobileMenuOpen) {
       setHidden(true);
-      setMobileMenuOpen(false); // Fecha menu mobile ao rolar para baixo
     } else {
       setHidden(false);
     }
@@ -90,7 +89,10 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          onClick={() => {
+            setMobileMenuOpen(!mobileMenuOpen);
+            if (hidden) setHidden(false); // Mostra header se estiver hidden
+          }}
           className="lg:hidden p-2 text-brand-cream hover:text-accent transition-colors"
           aria-label="Menu"
         >
@@ -105,35 +107,51 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="lg:hidden border-t border-brand-cream/10 bg-brand-wine/98 backdrop-blur-md"
-        >
-          <nav className="flex flex-col px-4 py-4 space-y-3">
-            {site.nav.map((item) => (
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden border-t border-brand-cream/10 bg-brand-wine/98 backdrop-blur-md"
+          >
+            <nav className="flex flex-col px-4 py-4 space-y-3">
+              {site.nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    setTimeout(() => {
+                      const element = document.querySelector(item.href);
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                  }}
+                  className="text-brand-cream/90 hover:text-brand-cream hover:bg-brand-cream/10 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide"
+                >
+                  {item.label}
+                </a>
+              ))}
               <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
+                href="#contato"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  setTimeout(() => {
+                    const element = document.querySelector("#contato");
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
+                }}
                 className="text-brand-cream/90 hover:text-brand-cream hover:bg-brand-cream/10 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide"
               >
-                {item.label}
+                CONTATO
               </a>
-            ))}
-            <a
-              href="#contato"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-brand-cream/90 hover:text-brand-cream hover:bg-brand-cream/10 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold tracking-wide"
-            >
-              CONTATO
-            </a>
-          </nav>
-        </motion.div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
